@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import os
 import json
 from discord.ext import commands
 
@@ -11,12 +12,6 @@ def get_prefix(bot, message):
     return prefixes[str(message.guild.id)]
 
 bot = commands.Bot(command_prefix = get_prefix)
-
-#token reader
-def read_token():
-    with open("gamerz-token.txt", "r") as f:
-        lines = f.readlines()
-        return lines[0].strip()
 
 #bot start and status
 @bot.event
@@ -62,7 +57,4 @@ async def changeprefix(ctx, prefix):
 
     await ctx.send(f"Prefix has been changed to {prefix}")
 
-
-#token and run
-token = read_token()
-bot.run(token)
+bot.run(os.environ['Discord_Bot_Token'])
