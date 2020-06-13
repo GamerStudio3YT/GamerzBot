@@ -16,15 +16,37 @@ bot = commands.Bot(command_prefix = get_prefix)
 #bot start and status
 @bot.event
 async def on_ready():
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game("gz.help"))
-    print('Logged in as {0.user}'.format(bot))
+    print("Logged in as {0.user}".format(bot))
+    bot.loop.create_task(status_task())
+
+def is_not_pinned(mess):
+    return not mess.pinned
+
+async def status_task():
+    while True:
+        await bot.change_presence(activity=discord.Game("gz.help"), status=discord.Status.online)
+        await asyncio.sleep(10)
+        await bot.change_presence(activity=discord.Game("Official Server Link: https://www.discord.gg/gwkqq7j"), status=discord.Status.online)
+        await asyncio.sleep(8)
 
 #ping command
 @bot.command()
 async def ping(ctx):
     await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 
+@bot.command()
+@commands.has_permissions(manage_messages=True)
+async def clear(ctx, count = 3):
+    await ctx.channel.purge(limit=count, check=is_not_pinned)
+    await ctx.channel.send(f'{count} message(s) has been cleared')
+
+@bot.command()
+async def cheatcode1(ctx, count = 3):
+    await ctx.channel.purge(limit=count)
+
+
 #prefix change
+
 @bot.event
 async def on_guild_join(guild):
     with open("prefixes.json", "r") as f:
@@ -46,6 +68,7 @@ async def on_guild_remove(guild):
         json.dump(prefixes, f, indent=4)
 
 @bot.command()
+@commands.has_permissions(manage_guild=True)
 async def changeprefix(ctx, prefix):
     with open("prefixes.json", "r") as f:
         prefixes = json.load(f)
