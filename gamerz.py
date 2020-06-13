@@ -57,4 +57,4 @@ async def changeprefix(ctx, prefix):
 
     await ctx.send(f"Prefix has been changed to {prefix}")
 
-bot.run(os.environ['Discord_Bot_Token'])
+bot.run(os.environ['Gamerz-Token'])
