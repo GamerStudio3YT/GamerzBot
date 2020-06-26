@@ -19,10 +19,7 @@ def is_not_pinned(mess):
 
 async def status_task():
     while True:
-        await bot.change_presence(activity=discord.Game("gz.help"), status=discord.Status.online)
-        await asyncio.sleep(10)
-        await bot.change_presence(activity=discord.Game("Official Server Link: https://www.discord.gg/gwkqq7j"), status=discord.Status.online)
-        await asyncio.sleep(8)
+        await bot.change_presence(activity=discord.Game("Under Maintenance"), status=discord.Status.online)
 
 #Welcome Command
 @bot.event
