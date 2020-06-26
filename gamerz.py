@@ -5,12 +5,6 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix = "gz.")
 
-#token reader
-def read_token():
-    with open("gamerz-token.txt", "r") as f:
-        lines = f.readlines()
-        return lines[0].strip()
-
 #bot start and status
 @bot.event
 async def on_ready():
@@ -30,7 +24,7 @@ async def status_task():
 #ping command
 @bot.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
+    await ctx.channel.send(f'Pong! {round(bot.latency * 1000)}ms')
 
 @bot.command()
 @commands.has_permissions(manage_messages=True)
