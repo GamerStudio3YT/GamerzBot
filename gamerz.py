@@ -17,10 +17,6 @@ async def on_ready():
 def is_not_pinned(mess):
     return not mess.pinned
 
-async def status_task():
-    while True:
-        await bot.change_presence(activity=discord.Stream("Under Maintenance"), status=discord.Status.online)
-
 #Welcome Command
 @bot.event
 async def on_member_join(member):
