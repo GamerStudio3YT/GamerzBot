@@ -71,7 +71,7 @@ async def helpdm(ctx):
         description="""
         This bot prefix is gz.
         gz.help
-        gz.clear
+        gz.clear (You should have manage messages permission to use this command)
         gz.ping
         These are the commands. More commands will be added soon. I hope you enjoy this bot
         
@@ -92,7 +92,7 @@ async def helpchannel(ctx):
         description="""
         This bot prefix is gz.
         gz.help
-        gz.clear
+        gz.clear (You should have manage messages permission to use this command)
         gz.ping
         These are the commands. More commands will be added soon. I hope you enjoy this bot
 
