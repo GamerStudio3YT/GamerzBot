@@ -8,6 +8,12 @@ bot.remove_command("help")
 WELCOME_CHANNEL_ID = 724628596676886589
 LEAVE_CHANNEL_ID = 724628622236844173
 
+#token reader
+def read_token():
+    with open("gamerz-token.txt", "r") as f:
+        lines = f.readlines()
+        return lines[0].strip()
+
 #bot start and status
 @bot.event
 async def on_ready():
@@ -17,6 +23,13 @@ async def on_ready():
 def is_not_pinned(mess):
     return not mess.pinned
 
+async def status_task():
+    while True:
+        await bot.change_presence(activity=discord.Game("gz.help"), status=discord.Status.online)
+        await asyncio.sleep(10)
+        await bot.change_presence(activity=discord.Game("Official Server Link: https://www.discord.gg/gwkqq7j"), status=discord.Status.online)
+        await asyncio.sleep(8)
+
 #Welcome Command
 @bot.event
 async def on_member_join(member):
@@ -25,11 +38,8 @@ async def on_member_join(member):
         await welcomechannel.send(f"{member.mention} has joined the server. Thank you for joining the server. I hope you have a great time in my server!")
         print(f"{member} has joined the server.")
         embed = discord.Embed(
-            title="Welcome to Gamer Studio 3 Community Server and to Gamer Studio 3 Youtube Channel".format(
-                member.name),
-            description="""Hi Member. Welcome to The Sticktuber Community. Don't forget to read the rules before chatting. 
-            I hope you have a great time in the server. If you have any complains or suggestion then you can dm me at Gamer Studio 3#6531 and 
-            if you got banned by mistake and you want to appeal then email me at channel.gamerstudio3@gmail.com """, color=0x22a7f0)
+            title="Welcome to The Sticktuber Community Server",
+            description="""Hi Member. Welcome to The Sticktuber Community. Don't forget to read the rules before chatting. I hope you have a great time in the server. If you have any complains or suggestion then you can dm me at Gamer Studio 3#6531 and if you got banned by mistake and you want to appeal then email me at channel.gamerstudio3@gmail.com """, color=0x22a7f0)
 
         if not member.dm_channel:
             await member.create_dm()
@@ -45,17 +55,19 @@ async def on_member_remove(member):
 #help command
 @bot.command()
 async def help(ctx):
-    await ctx.send("""Do you want the help command to be sent in your dm or in this channel?
-    If you want the help command to be sent in your dm then type gz.helpdm
-    If you want the help command to be sent in this channel then type gz.helpchannel""")
+    await ctx.send("""
+    Do you want the help command to be sent in your dm or in this channel? \n
+If you want the help command to be sent in your dm then type **gz.helpdm**
+If you want the help command to be sent in this channel then type **gz.helpchannel**""")
 
 #help command dm
 @bot.command()
 async def helpdm(ctx):
+
     await ctx.send("Help command has been sent to your dm")
 
     embed = discord.Embed(
-        title="Gamerz Command Lists".format(member.name),
+        title="Gamerz Command Lists",
         description="""
         This bot prefix is gz.
         gz.help
@@ -69,17 +81,14 @@ async def helpdm(ctx):
         
         This bot is created by Gamer Studio 3#6531""", color=0x22a7f0)
 
-    if not member.dm_channel:
-        await member.create_dm()
-        await member.dm_channel.send(embed=embed)
+    await ctx.author.send(embed=embed)
 
 #help command channel
-bot.command()
+@bot.command()
 async def helpchannel(ctx):
-    await ctx.send(embed=embed)
 
     embed = discord.Embed(
-        title="Gamerz Command Lists".format(member.name),
+        title="Gamerz Command Lists",
         description="""
         This bot prefix is gz.
         gz.help
@@ -92,6 +101,8 @@ async def helpchannel(ctx):
         Gamerz Bot Offical Server: https://www.discord.gg/gwkqq7j
 
         This bot is created by Gamer Studio 3#6531""", color=0x22a7f0)
+
+    await ctx.send(embed=embed)
 
 #ping command
 @bot.command()
