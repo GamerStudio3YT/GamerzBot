@@ -2,6 +2,10 @@ import discord
 import asyncio
 import os
 from discord.ext import commands
+import logging
+from discord import Member
+from discord.ext.commands import Bot, has_permissions, CheckFailure, BadArgument
+
 
 bot = commands.Bot(command_prefix = "gz.")
 bot.remove_command("help")
