@@ -15,7 +15,7 @@ LEAVE_CHANNEL_ID = 724628622236844173
 
 #token reader
 def read_token():
-    with open("gamerz-token.txt", "r") as f:
+    with open("GamerzBotToken.txt", "r") as f:
         lines = f.readlines()
         return lines[0].strip()
 
@@ -138,5 +138,7 @@ async def clear_error(ctx, error):
 async def cheatcode101(ctx, count = 3):
     await ctx.channel.purge(limit=count)
 
-bot.run(os.environ['Gamerz-Token'])
+#token and run
+token = read_token()
+bot.run(token)
 keep_alive.keep_alive()
