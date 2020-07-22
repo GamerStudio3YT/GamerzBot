@@ -4,6 +4,7 @@ import os
 from discord.ext import commands
 import logging
 from discord import Member
+import keep_alive
 from discord.ext.commands import Bot, has_permissions, CheckFailure, BadArgument
 
 
@@ -138,3 +139,4 @@ async def cheatcode101(ctx, count = 3):
     await ctx.channel.purge(limit=count)
 
 bot.run(os.environ['Gamerz-Token'])
+keep_alive.keep_alive()
