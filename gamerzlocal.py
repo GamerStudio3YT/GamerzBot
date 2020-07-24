@@ -66,8 +66,8 @@ async def on_member_join(member):
 @bot.event
 async def on_member_remove(member):
     leavechannel = discord.utils.get(member.guild.channels, id=LEAVE_CHANNEL_ID)
-    await leavechannel.send(member.displayName + "has left the server. We hope you will come back again :(")
-    print(f"{member} has left the server")
+    await leavechannel.send(f"{str(member)} has left the server. We hope you will come back again :(")
+    print(f"{str(member)} has left the server")
 
 #help command
 @bot.command()

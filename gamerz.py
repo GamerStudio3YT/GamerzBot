@@ -12,12 +12,6 @@ bot.remove_command("help")
 WELCOME_CHANNEL_ID = 724628596676886589
 LEAVE_CHANNEL_ID = 724628622236844173
 
-#token reader
-def read_token():
-    with open("gamerz-token.txt", "r") as f:
-        lines = f.readlines()
-        return lines[0].strip()
-
 #bot start and status
 @bot.event
 async def on_ready():
