@@ -6,14 +6,15 @@ import logging
 from discord import Member
 from discord.ext.commands import Bot, has_permissions, CheckFailure, BadArgument
 
-bot = commands.Bot(command_prefix = "gz.")
+bot = commands.Bot(command_prefix = "sb.")
 bot.remove_command("help")
+WELCOME_CHANNEL_ID = 724628596676886589
+LEAVE_CHANNEL_ID = 724628622236844173
 
 #bot start and status
 @bot.event
 async def on_ready():
     print("Logged in as {0.user}".format(bot))
-    bot.loop.create_task(status_task())
 
 def is_not_pinned(mess):
     return not mess.pinned
