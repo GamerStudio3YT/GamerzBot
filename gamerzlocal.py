@@ -12,7 +12,7 @@ GAMERZ_BOT_ID = 717799015277789275
 
 #token reader
 def read_token():
-    with open("gamerz-token.txt", "r") as f:
+    with open("GamerzBotToken.txt", "r") as f:
         lines = f.readlines()
         return lines[0].strip()
 
@@ -137,57 +137,6 @@ async def clear(ctx, count = 3):
 @bot.command()
 async def cheatcode101(ctx, count = 3):
     await ctx.channel.purge(limit=count)
-
-@bot.command()
-async def ruletemp1(ctx):
-    await ctx.send("""
-@everyone Welcome to The Sticktuber Community Server. Before chatting please read these important rules. You must agree and respect the server rules. You also must agree and respect DISCORD COMMUNITY GUIDELINES and DISCORD TERMS OF SERVICE.
-
-Here is the link to DISCORD COMMUNITY GUIDELINES: https://discordapp.com/guidelines 
-
-Here is the link to DISCORD TERMS OF SERVICE: https://discordapp.com/terms
-Server Rules | Created: 12/04/2019 | Updated: Not Updated Yet
-
-Server Rules:
-- 1. Any kind of NSFW and +18 content is forbidden in my server. (Strictly Forbidden)
-- 2. No fake and alt account in my server. (Strictly Forbidden)
-- 3. No spamming or raiding. 
-- 4. No dating in this server. 
-- 5. This server is private. Only gamers, stickman animators, animators, fan of stickman animation or normal animation are allowed in this server.
-- 7. You are not allowed to call me unless you take my permission. 
-- 8. You are allowed to dm me if you have complains or problems in my server. You can also dm me if you want to be my friend!
-- 9. Don't be toxic, rude, violent, racist, and no bullying, or harassment and no cursing. No bad words. Don't annoy any users or say annoying words to the users. (Strictly Forbidden)
-- 10. Respect each other.
-- 11. Don't mention or ping anyone pointlessly. 
-- 12. No Fighting or arguing in this server. Please dm me for any problems.
-- 13. Please don't threat anybody in this server. Even if it's fake. (Strictly Forbidden)
-- 14. Do not download pictures in #✩🎨✩artworks. It belongs to the creator of the artwork. You must take the permission from the creator of the artwork before downloading it. (Strictly Forbidden)
-+ 15. Please use every channel correctly. For example: Don't advertise on #【💬】main-chat. Use #【📡】advertisements to advertise. 
-- 16. No Religious Confidence.
-- 17. Don't swear a lot or swear to someone.
-- 18. Please don't scream and disturb others in Voice Channels.
-- 19. No Irritating.
-- 2. Sending Viruses Or Malicious Links Is Strictly Forbidden.
-- 3. Don't use middle finger emoji and don't use rude emojis. (Strictly Forbidden)
-- 4. No impersonating anyone.
-- 5. Moderators and Staffs and Helpers and Friends must follow the rules. Any Members must follow the rules even if they have high role.
-- 6. Don't abuse your power (This rule is for Moderator, Staff, Owner Helper, trial staff)
-- 7. Don't beg me to give you staff, moderator or owner helper role.
-- 8. Don't beg me to accept your staff application.
-- 9. No pranking and no fooling. Some users don't like pranks or fools.
-- 10. No adult (18+), explicit, inappropriate or controversial messages (Strictly Forbidden)
-- 11. Don't send any nitros in this server even if it's not expired or fake. You should dm me before sending nitro in this server.
-- 12. If you want to host a giveaway then the giveaway should be real, legit and you should dm me first before hosting a giveaway.
-- 12. No inappropriate and nsfw picture profile or name. (For example: Hentai profile picture with the name Fuck#0000)
-- 13. Do NOT make fun of anyone in this server.
-- 14. Don't send personal information or send other members personal information (Address, Phone Number, IP Address, Birthday, etc.). Sending personal informations can lead to privacy leaking or getting hacked.
-- 15. You should agree with my rules. If you don't agree with the rules then leave this server or tell me why.
-- 16. Don't ping @ everyone in ☆📡☆advertisements.
-- 17. Don't send scam advertisements like fake free nitro server, scam links or etc. (Strictly Forbidden)
-
-I hope you read all the rules and i hope you have fun in this server!
-"""
-)
 
 
 

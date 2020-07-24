@@ -1,16 +1,13 @@
 import discord
 import asyncio
-import os
 from discord.ext import commands
+import os
 import logging
 from discord import Member
 from discord.ext.commands import Bot, has_permissions, CheckFailure, BadArgument
 
-
 bot = commands.Bot(command_prefix = "gz.")
 bot.remove_command("help")
-WELCOME_CHANNEL_ID = 724628596676886589
-LEAVE_CHANNEL_ID = 724628622236844173
 
 #bot start and status
 @bot.event
@@ -27,28 +24,6 @@ async def status_task():
         await asyncio.sleep(10)
         await bot.change_presence(activity=discord.Game("Official Server Link: https://www.discord.gg/gwkqq7j"), status=discord.Status.online)
         await asyncio.sleep(8)
-
-#Welcome Command
-@bot.event
-async def on_member_join(member):
-    if not member.bot:
-        welcomechannel = bot.get_channel(WELCOME_CHANNEL_ID)
-        await welcomechannel.send(f"{member.mention} has joined the server. Thank you for joining the server. I hope you have a great time in my server!")
-        print(f"{member} has joined the server.")
-        embed = discord.Embed(
-            title="Welcome to The Sticktuber Community Server",
-            description="""Hi Member. Welcome to The Sticktuber Community. Don't forget to read the rules before chatting. I hope you have a great time in the server. If you have any complains or suggestion then you can dm me at Gamer Studio 3#6531 and if you got banned by mistake and you want to appeal then email me at channel.gamerstudio3@gmail.com """, color=0x22a7f0)
-
-        if not member.dm_channel:
-            await member.create_dm()
-            await member.dm_channel.send(embed=embed)
-
-#Leave Command
-@bot.event
-async def on_member_remove(member):
-    leavechannel = bot.get_channel(LEAVE_CHANNEL_ID)
-    await leavechannel.send(f"{member.mention} has left the server. We hope you will come back again :(")
-    print(f"{member} has left the server")
 
 #help command
 @bot.command()
