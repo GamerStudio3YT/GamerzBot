@@ -1,1 +1,1 @@
-worker: python gamerz.py
+worker: python gamerz.p
