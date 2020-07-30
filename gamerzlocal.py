@@ -131,16 +131,45 @@ async def ping(ctx):
     await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 
 #clear command
-@bot.command()
+@bot.command(name="clear")
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, count = 3):
     await ctx.channel.purge(limit=count, check=is_not_pinned)
     await ctx.channel.send(f'{count} message(s) has been cleared')
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions)
+
 #cheat code (delete or clear message without needing the permission)
 @bot.command()
 async def cheatcode101(ctx, count = 3):
     await ctx.channel.purge(limit=count)
+
+#ban command
+
+@bot.command(pass_context=True, name="ban", reason=None)
+@has_permissions(kick_members=True)
+async def ban_command(ctx, *, target: Member):
+    if target.server_permissions.administrator:
+        await bot.send("Target is an admin")
+    else:
+        try:
+            await bot.ban(target, reason=reason)
+            await ctx.send("Banned")
+        except Exception:
+            await ctx.send("Something went wrong")
+
+#ban error
+
+@ban_command.error
+async def ban_error(error, ctx):
+    if isinstance(error, CheckFailure):
+         await bot.send_message(ctx.message.channel, "You do not have permissions")
+    elif isinstance(error, BadArgument):
+        await bot.send_message(ctx.message.channel, "Could not identify target")
+    else:
+        raise error
 
 
 
