@@ -3,6 +3,10 @@ import asyncio
 import requests
 import aiohttp
 from discord.ext import commands
+import os
+import logging
+from discord import Member
+from discord.ext.commands import Bot, has_permissions, CheckFailure, BadArgument
 
 bot = commands.Bot(command_prefix = "gz.")
 bot.remove_command("help")
